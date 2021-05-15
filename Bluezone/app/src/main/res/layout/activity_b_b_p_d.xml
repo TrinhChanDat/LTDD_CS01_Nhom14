@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:text="Video hướng dẩn phòng chống dịch"
+        android:text="Video hướng dẫn phòng chống dịch"
         android:textAlignment="center"
         android:paddingTop="20dp"
         android:textSize="20sp"
