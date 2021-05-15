@@ -12,7 +12,7 @@
       android:id="@+id/textView"
       android:layout_width="match_parent"
       android:layout_height="65dp"
-      android:text="Tin tức Covid"
+      android:text="Các câu hỏi thường gặp"
       android:textAlignment="center"
       android:paddingTop="20dp"
       android:textSize="20sp"

@@ -2,6 +2,7 @@ package com.example.bluezone;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class FAQ extends AppCompatActivity {
@@ -13,6 +14,10 @@ public class FAQ extends AppCompatActivity {
 
         web = (WebView)findViewById(R.id.webFAQ);
         web.setWebViewClient(new MyWebViewClient());
+        WebSettings webSettings = web.getSettings();
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
         web.loadUrl("https://bluezone.gov.vn/cac-cau-hoi-thuong-gap");
     }
 
