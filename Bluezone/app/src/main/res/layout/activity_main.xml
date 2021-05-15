@@ -53,14 +53,14 @@
                 android:id="@+id/btn_report"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/list"
+                android:src="@drawable/hey"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phản hồi"
+                android:text="FAQ"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
