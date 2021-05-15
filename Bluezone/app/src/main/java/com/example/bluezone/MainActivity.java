@@ -1,12 +1,15 @@
 package com.example.bluezone;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Intent IntTFAQ = new Intent(MainActivity.this, FAQ.class);
         Intent KBYT = new Intent(MainActivity.this, KhaiBaoYTe.class);
         //Intent SoDoDich = new Intent(getApplicationContext(), SoDo.class);
-        buildNotification(tintuc, "Tin tức covid", "Nhấn vào để xem những thông tin cập nhật mới nhất về Covid", 1);
+
         buildNotification(KBYT, "Khai Báo Y Tế ngay!","Hãy khai báo y tế để giúp cộng đồng cùng vượt qua dịch Covid nhé!", 2);
         buildNotification(IntTFAQ, "Tìm hiểu Bluezone ngay!","Xem những câu hỏi thường gặp và giải đáp thắc mắc về Bluezone!", 3);
         buildNotification(bppb, "Xem ngay những biện pháp phòng Covid!","Xem video về cách phòng dịch nhé!", 4);
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Chức năng xem thông tin dịch bệnh
         bt_TinTuc.setOnClickListener(new View.OnClickListener() {
+
 
             @Override
             public void onClick(View v) {
@@ -89,14 +93,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buildNotification(Intent intent, String ContTitle, String ContText, int requestCode) {
-        PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), requestCode, intent, 0);
-        Notification.Builder builder = new Notification.Builder(MainActivity.this)
-                .setSmallIcon(R.drawable.item_blue)
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel("ID",
+                    "Name",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            notificationChannel.setDescription("Desc");
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "ID")
+                .setSmallIcon(R.drawable.ic_icon_bluezone)
                 .setContentTitle(ContTitle)
                 .setContentText(ContText)
-                .setDeleteIntent(pendingIntent);
+                .setAutoCancel(true);
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(100, builder.build());
+        intent = new Intent(this, MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pi);
+        notificationManager.notify(0, builder.build());
     }
 }
