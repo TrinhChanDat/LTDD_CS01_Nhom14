@@ -2,6 +2,7 @@ package com.example.bluezone;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class KhaiBaoYTe extends AppCompatActivity {
@@ -14,6 +15,10 @@ public class KhaiBaoYTe extends AppCompatActivity {
 
         web = (WebView)findViewById(R.id.webKBYT);
         web.setWebViewClient(new MyWebViewClient());
+        WebSettings webSettings = web.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
         web.loadUrl("https://tokhaiyte.vn/");
     }
 
