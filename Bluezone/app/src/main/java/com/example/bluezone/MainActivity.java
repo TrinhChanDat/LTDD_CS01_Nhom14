@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        // chức năng faq
         bt_faq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        // chức năng khai báo y tế
         bt_kbyt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
                 buildNotification(intent1, "Bạn đang khai báo y tế!","Khai báo đúng thông tin để giúp cộng đồng cùng chống đại dịch Covid", 8);
 
                 Intent intent = new Intent(MainActivity.this, KhaiBaoYTe.class);
+                startActivity(intent);
+            }
+        });
+        // chức năng xem thống kê dịch bệnh
+        bt_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), ThongKe.class) ;
+                buildNotification(intent1, "Bạn đang xem thống kê thống kê về dịch bệnh!", "Xem tình hình dịch bệnh trong nước và quốc tế!", 9);
+
+                Intent intent = new Intent(MainActivity.this, ThongKe.class);
                 startActivity(intent);
             }
         });

@@ -134,7 +134,7 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Biểu đồ dịch bệnh"
+                android:text="Thống kê dịch bệnh"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textAlignment="center"/>
